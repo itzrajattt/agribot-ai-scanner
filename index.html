@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#06140e">
+
+  <meta name="description"
+        content="AgriBot AI - An AI-powered smart farming
+        assistant for analyzing visible plant leaf conditions.">
+
+  <title>AgriBot AI | AI Plant Health Scanner</title>
+
+  <!-- Website Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <!-- AGRIBOT AI HEADER -->
+    <header>
+      <h1>🌱 AgriBot AI</h1>
+
+      <p>
+        YOUR SMART FARMING COMPANION
+      </p>
+    </header>
+
+
+    <!-- AI PLANT SCANNER -->
+    <section class="scanner-card">
+
+      <h2>🌿 AI Plant Health Scanner</h2>
+
+      <p>
+        Discover your plant's visible health condition
+        with the power of Artificial Intelligence.
+        Upload a clear photo of a plant leaf to begin.
+      </p>
+
+
+      <!-- IMAGE UPLOAD -->
+      <input
+        type="file"
+        id="plantImage"
+        accept="image/*"
+        aria-label="Upload a plant leaf photo"
+      >
+
+
+      <!-- IMAGE PREVIEW -->
+      <img
+        id="preview"
+        alt="Preview of your selected plant leaf"
+        hidden
+      >
+
+
+      <!-- ANALYZE BUTTON -->
+      <button
+        type="button"
+        id="analyzeBtn"
+      >
+        ✨ Analyze Plant
+      </button>
+
+
+      <!-- AI PREDICTION RESULTS -->
+      <div
+        id="result"
+        role="status"
+        aria-live="polite"
+      >
+        🌱 Upload a plant photo to start AI analysis.
+      </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      <p>
+        🌿 AgriBot AI | Smart Farming Innovation
+      </p>
+
+      <p>
+        Built with care for a greener future.
+      </p>
+    </footer>
+
+  </main>
+
+
+  <!-- TENSORFLOW.JS LIBRARY -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js">
+  </script>
+
+
+  <!-- GOOGLE TEACHABLE MACHINE IMAGE LIBRARY -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js">
+  </script>
+
+
+  <!-- AGRIBOT AI JAVASCRIPT -->
+  <script src="script.js"></script>
+
+</body>
+</html>
