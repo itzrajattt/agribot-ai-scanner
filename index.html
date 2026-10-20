@@ -46,13 +46,38 @@
       </p>
 
 
-      <!-- IMAGE UPLOAD -->
-      <input
-        type="file"
-        id="plantImage"
-        accept="image/*"
-        aria-label="Upload a plant leaf photo"
-      >
+      
+<!-- CAMERA + GALLERY OPTIONS -->
+<div class="photo-options">
+
+  <button type="button" id="cameraBtn">
+    📷 Capture Photo
+  </button>
+
+  <button type="button" id="galleryBtn">
+    🖼️ Upload Photo
+  </button>
+
+</div>
+
+<!-- CAMERA INPUT -->
+<input
+  type="file"
+  id="cameraInput"
+  accept="image/*"
+  capture="environment"
+  hidden
+>
+
+<!-- EXISTING GALLERY INPUT -->
+<input
+  type="file"
+  id="plantImage"
+  accept="image/*"
+  aria-label="Upload a plant leaf photo"
+  hidden
+>
+
 
 
       <!-- IMAGE PREVIEW -->

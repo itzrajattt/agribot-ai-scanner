@@ -8,6 +8,9 @@ const MODEL_URL =
   "https://teachablemachine.withgoogle.com/models/Y1zv_OTiK/";
 
 const imageInput = document.getElementById("plantImage");
+const cameraBtn = document.getElementById("cameraBtn");
+const galleryBtn = document.getElementById("galleryBtn");
+const cameraInput = document.getElementById("cameraInput");
 const preview = document.getElementById("preview");
 const analyzeBtn = document.getElementById("analyzeBtn");
 const result = document.getElementById("result");
@@ -15,10 +18,17 @@ const result = document.getElementById("result");
 let model = null;
 let modelPromise = null;
 let imageURL = null;
+cameraBtn.addEventListener("click", () => {
+  cameraInput.click();
+});
+
+galleryBtn.addEventListener("click", () => {
+  imageInput.click();
+});
 
 // STEP 1: IMAGE UPLOAD AND PREVIEW
 
-imageInput.addEventListener("change", function () {
+function handleImageChange(file) {
   if (imageURL) {
     URL.revokeObjectURL(imageURL);
     imageURL = null;
@@ -26,8 +36,6 @@ imageInput.addEventListener("change", function () {
 
   preview.hidden = true;
   preview.removeAttribute("src");
-
-  const file = imageInput.files[0];
 
   if (!file) {
     result.textContent = "🌱 Please select a plant photo.";
@@ -38,6 +46,10 @@ imageInput.addEventListener("change", function () {
     result.textContent = "⚠️ Please upload an image file.";
     return;
   }
+
+  // Reset previous AI result when a new image is selected
+  result.textContent = "🌱 New photo selected. Click Analyze Plant.";
+ // Keep existing trained model loaded
 
   imageURL = URL.createObjectURL(file);
 
@@ -52,6 +64,22 @@ imageInput.addEventListener("change", function () {
   preview.src = imageURL;
   result.textContent =
     "✅ Photo selected! Click Analyze Plant.";
+}
+
+ // CAMERA PHOTO
+cameraInput.addEventListener("change", function () {
+  const file = cameraInput.files[0];
+  if (file) {
+    handleImageChange(file);
+  }
+});
+
+// GALLERY PHOTO
+imageInput.addEventListener("change", function () {
+  const file = imageInput.files[0];
+  if (file) {
+    handleImageChange(file);
+  }
 });
 
 // STEP 2: LOAD YOUR AI MODEL
@@ -83,15 +111,14 @@ async function loadModel() {
 
 analyzeBtn.addEventListener("click", async function () {
 
-  if (
-    !imageInput.files.length ||
-    !preview.complete ||
-    !preview.naturalWidth
-  ) {
-    result.textContent =
-      "⚠️ Upload a valid leaf photo first.";
-    return;
-  }
+if (
+  !imageURL ||
+  !preview.complete ||
+  !preview.naturalWidth
+) {
+  result.textContent = "⚠️ Capture or upload a valid leaf photo first.";
+  return;
+}
 
   analyzeBtn.disabled = true;
   analyzeBtn.textContent = "🔍 Analyzing...";

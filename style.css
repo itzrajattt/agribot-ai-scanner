@@ -438,3 +438,36 @@ footer {
   white-space: pre-line;
   text-align: left;
 }
+
+/* Hide file inputs; use custom camera/gallery buttons */
+#cameraInput,
+#plantImage {
+  display: none !important;
+}
+
+/* Camera and Gallery buttons */
+.photo-options {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+
+#cameraBtn,
+#galleryBtn {
+  background: linear-gradient(135deg, #25ba75, #a3f9bc);
+  color: #062817;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 24px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#cameraBtn:hover,
+#galleryBtn:hover {
+  transform: translateY(-2px);
+}
